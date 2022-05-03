@@ -1,0 +1,40 @@
+#N canvas 284 175 578 394 12;
+#X obj 31 279 clone -s 1 voice 20, f 37;
+#X floatatom 95 136 5 0 0 1 attackTime\ (ms) - - 0;
+#X msg 95 160 all \$1;
+#X floatatom 159 161 5 0 0 1 decayTime\ (ms) - - 0;
+#X msg 159 185 all \$1;
+#X floatatom 223 186 5 0 100 1 sustainLevel\ (%) - - 0;
+#X msg 223 240 all \$1;
+#X obj 223 218 / 100;
+#X floatatom 287 217 5 0 0 1 releaseTime\ (ms) - - 0;
+#X msg 287 241 all \$1;
+#X obj 31 35 notein 1, f 11;
+#X text 103 35 <-- channel to receive midi notes;
+#X obj 31 61 poly 20, f 11;
+#X obj 31 86 pack f f f, f 11;
+#X text 134 62 <-- generate tags for a maximum of 20 polyphonic voices
+;
+#X text 308 279 <-- clones "voice" abstraction \, so you have access
+to 20 instances and then be able to play chords and polyphony "-s 1"
+makes it compatible with "poly" object, f 32;
+#X obj 31 329 dac~;
+#X obj 31 304 /~ 2;
+#X connect 0 0 17 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 1;
+#X connect 3 0 4 0;
+#X connect 4 0 0 2;
+#X connect 5 0 7 0;
+#X connect 6 0 0 3;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 0 4;
+#X connect 10 0 12 0;
+#X connect 10 1 12 1;
+#X connect 12 0 13 0;
+#X connect 12 1 13 1;
+#X connect 12 2 13 2;
+#X connect 13 0 0 0;
+#X connect 17 0 16 0;
+#X connect 17 0 16 1;
